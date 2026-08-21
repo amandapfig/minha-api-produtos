@@ -46,7 +46,7 @@ app.post('/produto', (req, res) => {
 })
 
 //atualizar produto que ja existe
-app.put('/produto/:id' (req, res) => {
+app.put('/produto/:id', (req, res) => {
     const id = parseInt(req.params.id)
     const index = produtos.findIndex(produto => produto.id === id)
     
