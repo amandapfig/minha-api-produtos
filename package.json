@@ -4,5 +4,22 @@
   },
   "dependencies": {
     "express": "^5.2.1"
-  }
+  },
+  "name": "nova-pasta",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amandapfig/minha-api-produtos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/amandapfig/minha-api-produtos/issues"
+  },
+  "homepage": "https://github.com/amandapfig/minha-api-produtos#readme"
 }
