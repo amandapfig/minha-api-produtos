@@ -4,14 +4,59 @@ const app = express()
 app.use(express.json())
 
 const produtos = [
-    { id: 1, descricao: "Banana Prata 1Kg", preco: 8.99 },
-    { id: 2, descricao: "Leite integral 1L", preco: 2.99 },
-    { id: 3, descricao: "Paçoca", preco: 1.99 }
+    {
+        id: 1,
+        descricao: "Banana Prata 1Kg",
+        preco: 8.99,
+        categoria: "Frutas",
+        estoque: 20
+    },
+    {
+        id: 2,
+        descricao: "Leite integral 1L",
+        preco: 2.99,
+        categoria: "Laticínios",
+        estoque: 30
+    },
+    {
+        id: 3,
+        descricao: "Paçoca",
+        preco: 1.99,
+        categoria: "Doces",
+        estoque: 50
+    },
+    {
+        id: 4,
+        descricao: "Arroz 5Kg",
+        preco: 24.90,
+        categoria: "Alimentos",
+        estoque: 15
+    },
+    {
+        id: 5,
+        descricao: "Café 500g",
+        preco: 18.90,
+        categoria: "Bebidas",
+        estoque: 25
+    }
 ]
 
-// Listar produtos
+// Listar todos os produtos
 app.get('/produtos', (req, res) => {
     res.json(produtos)
+})
+
+// Buscar produtos por id
+app.get('/produtos/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+
+    const produto = produtos.find(produto => produto.id === id)
+
+    if (produto) {
+        res.json(produto)
+    } else {
+        res.status(404).send("Esse id não existe")
+    }
 })
 
 // Excluir produto
@@ -31,9 +76,17 @@ app.delete('/produtos/:id', (req, res) => {
 
 // Criar novo produto
 app.post('/produtos', (req, res) => {
-    const novoProduto = req.body
+    const novoProduto = {
+        id: produtos.length > 0
+            ? Math.max(...produtos.map(produto => produto.id)) + 1
+            : 1,
+        descricao: req.body.descricao,
+        preco: req.body.preco,
+        categoria: req.body.categoria,
+        estoque: req.body.estoque
+    }
 
-    produtos.push(novoProduto) // Adicionando o novo produto ao array de produtos
+    produtos.push(novoProduto)
 
     res.status(201).json(novoProduto)
 })
