@@ -3,13 +3,14 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
   },
   "name": "nova-pasta",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amandapfig/minha-api-produtos.git"
